@@ -1,14 +1,15 @@
 import React from 'react';
 import { useState } from 'react';
 
-const TodoSearch = () => {
+const TodoSearch = ({searchTodo, setSearchTodo}) => {
 
-  const [ searchTodo , setSearchTodo ] = useState('')
+
 
   const changeTodoSearch = (e) =>{
     setSearchTodo(e.target.value);
   }
 
+  console.log(searchTodo)
   return (
     <div>
       <input className='TodoSearch' placeholder='Cebolla' 

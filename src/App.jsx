@@ -8,20 +8,23 @@ import TodoSearch from './components/TodoSearch'
 
 function App() {
 
-  const todos = [
-    {text: 'Cortar cebolla', completed: true},
-    {text: 'Tomar el curso', completed: false},
-    {text: 'Llorar', completed: false},
+  const deFaultTodos = [
+    { text: 'Cortar cebolla', completed: true },
+    { text: 'Tomar el curso', completed: false },
+    { text: 'Llorar', completed: false },
   ];
+  const [todos, setTodos] = useState(deFaultTodos);
+  const [searchTodo, setSearchTodo] = useState('');
 
+  const completedtodos = todos.filter(todo => todo.completed === true);
 
 
   return (
     <div className="App">
       <h1>LISTA DE TAREAS</h1>
       <TodoCounter />
-      <TodoSearch />
-      <TodoList todos={todos}/>
+      <TodoSearch searchTodo={searchTodo} setSearchTodo={setSearchTodo} />
+      <TodoList todos={todos} />
       <CreateTodoButton />
     </div>
   )

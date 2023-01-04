@@ -7,12 +7,12 @@ const CreateTodoButton = () => {
   }
 
   return (
-    <div>
+    
       <button 
         className='CreateTodoButton'
         onClick={()=> clickCreateButton()}
       >+</button>
-    </div>
+    
   );
 };
 
