@@ -10,7 +10,7 @@ function App() {
 
   const deFaultTodos = [
     { text: 'Cortar cebolla', completed: true },
-    { text: 'Tomar el curso', completed: true },
+    { text: 'Tomar el curso', completed: false },
     { text: 'Llorar', completed: false },
   ];
   const [todos, setTodos] = useState(deFaultTodos);
@@ -19,6 +19,7 @@ function App() {
   const completedtodos = todos.filter(todo => todo.completed === true).length;
   const totalTodos = todos.length;
 
+  // logica para busqueda de todos
   let searchedTodos = [];
 
   if (!searchTodo.length >= 1) {
@@ -31,12 +32,24 @@ function App() {
     })
   }
 
+  // //eliminando todos
+  // const completeTodos = (text) => {
+  //   const todoIndex = todos.findIndex(todo => todo.text === text);
+
+  //   const newTodos= [...todos];
+  //   todos[todoIndex].completed = true
+  //   // todos[todoIndex] ={
+  //   //   text: todos[todoIndex].text,
+  //   //   completed: true,
+  //   // }
+  // }
+
   return (
     <div className="App">
       <h1>LISTA DE TAREAS</h1>
       <TodoCounter completedtodos={completedtodos} totalTodos={totalTodos} />
       <TodoSearch searchTodo={searchTodo} setSearchTodo={setSearchTodo} />
-      <TodoList searchedTodos={searchedTodos} />
+      <TodoList searchedTodos={searchedTodos} todos={todos} setTodos={setTodos}/>
       <CreateTodoButton />
     </div>
   )
