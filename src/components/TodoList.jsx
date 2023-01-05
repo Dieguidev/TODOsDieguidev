@@ -1,7 +1,7 @@
 import React from 'react';
 import TodoItem from './TodoItem';
 
-const TodoList = ({todos}) => {
+const TodoList = ({searchedTodos}) => {
 
 
 
@@ -9,7 +9,7 @@ const TodoList = ({todos}) => {
     <div>
       <section>
         <ul className='TodoList'>
-          {todos.map((todo) => (
+          {searchedTodos.map((todo) => (
             <TodoItem key={todo.text}  todo= {todo}/>))}
         </ul>
       </section>
