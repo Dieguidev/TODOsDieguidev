@@ -5,6 +5,7 @@ import CreateTodoButton from './components/CreateTodoButton'
 import TodoCounter from './components/TodoCounter'
 import TodoList from './components/TodoList'
 import TodoSearch from './components/TodoSearch'
+import TodoItem from './components/TodoItem';
 
 function App() {
 
@@ -32,24 +33,34 @@ function App() {
     })
   }
 
-  // //eliminando todos
-  // const completeTodos = (text) => {
-  //   const todoIndex = todos.findIndex(todo => todo.text === text);
+  //completaNDO TODOS
+  const clickOnComplete = (text) => {
+    // alert(`ya completaste el todo ${todo.text}`)
+    const todoIndex = todos.findIndex(todo => todo.text === text);
+    const newTodos= [...todos];
+    newTodos[todoIndex].completed = true;
+    setTodos(newTodos);
+  }
 
-  //   const newTodos= [...todos];
-  //   todos[todoIndex].completed = true
-  //   // todos[todoIndex] ={
-  //   //   text: todos[todoIndex].text,
-  //   //   completed: true,
-  //   // }
-  // }
+  //eliminando TODOS
+  const clickOnDelete = (text) => {
+    // alert(`eliminaste el todo ${todo.text}`)
+    const todoIndex = todos.findIndex(todo => todo.text === text);
+    const newTodos= [...todos];
+    newTodos.splice(todoIndex, 1);
+    setTodos(newTodos);
+  }
 
   return (
     <div className="App">
       <h1>LISTA DE TAREAS</h1>
       <TodoCounter completedtodos={completedtodos} totalTodos={totalTodos} />
       <TodoSearch searchTodo={searchTodo} setSearchTodo={setSearchTodo} />
-      <TodoList searchedTodos={searchedTodos} todos={todos} setTodos={setTodos}/>
+      {/* <TodoList searchedTodos={searchedTodos} todos={todos} setTodos={setTodos} /> */}
+      <TodoList searchedTodos={searchedTodos} todos={todos} setTodos={setTodos}>
+        {searchedTodos.map((todo) => (
+          <TodoItem key={todo.text} todo={todo} clickOnComplete={clickOnComplete} clickOnDelete={clickOnDelete}/>))}
+      </TodoList>
       <CreateTodoButton />
     </div>
   )
