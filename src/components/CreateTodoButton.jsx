@@ -10,7 +10,7 @@ const CreateTodoButton = ({setOpenModal, openModaL}) => {
     
       <button 
         className='CreateTodoButton'
-        onClick={()=> (setOpenModal(!openModaL))}
+        onClick={()=> setOpenModal(!openModaL)}
       >+</button>
     
   );

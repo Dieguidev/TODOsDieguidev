@@ -7,6 +7,7 @@ import TodoList from './components/TodoList'
 import TodoSearch from './components/TodoSearch'
 import TodoItem from './components/TodoItem';
 import Modal from './modal/Modal';
+import TodoForm from './components/TodoForm';
 
 
 function App() {
@@ -68,7 +69,17 @@ function App() {
     newTodos.splice(todoIndex, 1);
     saveTodos(newTodos);
   }
-
+  
+  //añadiendo todos
+  const addTodo = (text) => {
+    const newTodos = [...todos];
+    newTodos.push({
+      completed: false,
+      text,
+    })
+    saveTodos(newTodos);
+  }
+  
 
   return (
     <div className="App">
@@ -83,7 +94,7 @@ function App() {
 
       {openModaL && (
         <Modal>
-          <p>tele</p>
+          <TodoForm addTodo={addTodo} setOpenModal={setOpenModal}/>
         </Modal>
       )}
       <CreateTodoButton setOpenModal={setOpenModal} openModaL={openModaL}/>
