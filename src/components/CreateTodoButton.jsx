@@ -1,16 +1,16 @@
 import React from 'react';
 
-const CreateTodoButton = () => {
+const CreateTodoButton = ({setOpenModal, openModaL}) => {
 
-  const clickCreateButton= () => {
-    alert('si funciono')
-  }
+  // const clickCreateButton= () => {
+  //   setOpenModal(true)
+  // }
 
   return (
     
       <button 
         className='CreateTodoButton'
-        onClick={()=> clickCreateButton()}
+        onClick={()=> (setOpenModal(!openModaL))}
       >+</button>
     
   );
